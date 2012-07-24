@@ -9,6 +9,11 @@
 			<label index="pfiles_title">Files</label>
 			<label index="pfolder_title">Folder</label>
 			<label index="plast_title">Last Sermons</label>
+            
+            <label index="scheduler.importFiles.name">Import Files</label>
+            <label index="scheduler.importFiles.description">A scheduler to import all the new sermons.</label>
+            <label index="scheduler.importFiles.label.pageid">Page id</label>
+            <label index="scheduler.importFiles.flashmessage.invalid_pid">The value for page id is not valid. Only positive integer allowed.</label>
 		</languageKey>
 		<languageKey index="de" type="array">
 			<label index="pfiles_title">Predigten</label>

@@ -21,6 +21,9 @@
 			<label index="tt_content.list_type_pfiles">Sermons</label>
 			<label index="tt_content.list_type_pfolder">Folder</label>
 			<label index="tt_content.list_type_plast">Last Sermons</label>
+            
+            <label index="task_pageid.alttitle">Page id</label>
+            <label index="task_pageid.description">Enter the uid of a page where the content should be hidden</label>
 		</languageKey>
 		<languageKey index="de" type="array">
 			<label index="tx_websermons_files">Dateien</label>
