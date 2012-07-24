@@ -44,7 +44,7 @@ CREATE TABLE tx_websermons_files (
 	speaker tinytext,
 	topic tinytext,
 	path tinytext,
-	date_934e1a7418 int(11) DEFAULT '0' NOT NULL,
+	pdate int(11) DEFAULT '0' NOT NULL,
 	links text,
 	parentfolder int(11) DEFAULT '0' NOT NULL,
 	

@@ -6,7 +6,7 @@ if (!defined('TYPO3_MODE')) {
 $TCA['tx_websermons_files'] = array(
 	'ctrl' => $TCA['tx_websermons_files']['ctrl'],
 	'interface' => array(
-		'showRecordFieldList' => 'sys_language_uid,l10n_parent,l10n_diffsource,hidden,starttime,endtime,fe_group,title,speaker,topic,path,date_934e1a7418,links,parentfolder'
+		'showRecordFieldList' => 'sys_language_uid,l10n_parent,l10n_diffsource,hidden,starttime,endtime,fe_group,title,speaker,topic,path,pdate,links,parentfolder'
 	),
 	'feInterface' => $TCA['tx_websermons_files']['feInterface'],
 	'columns' => array(
@@ -131,9 +131,9 @@ $TCA['tx_websermons_files'] = array(
 				'size' => '30',
 			)
 		),
-		'date_934e1a7418' => array(		
+		'pdate' => array(		
 			'exclude' => 0,		
-			'label' => 'LLL:EXT:websermons/locallang_db.xml:tx_websermons_files.date_934e1a7418',		
+			'label' => 'LLL:EXT:websermons/locallang_db.xml:tx_websermons_files.pdate',		
 			'config' => array(
 				'type'     => 'input',
 				'size'     => '8',
@@ -177,7 +177,7 @@ $TCA['tx_websermons_files'] = array(
 		),
 	),
 	'types' => array(
-		'0' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, title;;;;2-2-2, speaker;;;;3-3-3, topic, path, date_934e1a7418, links, parentfolder')
+		'0' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, title;;;;2-2-2, speaker;;;;3-3-3, topic, path, pdate, links, parentfolder')
 	),
 	'palettes' => array(
 		'1' => array('showitem' => 'starttime, endtime, fe_group')
