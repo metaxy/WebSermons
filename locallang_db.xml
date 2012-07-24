@@ -13,7 +13,7 @@
 			<label index="tx_websermons_files.path">Path</label>
 			<label index="tx_websermons_files.pdate">Date</label>
 			<label index="tx_websermons_files.links">Links</label>
-			<label index="tx_websermons_files.parentfolder">Ordner</label>
+			<label index="tx_websermons_files.parentfolder">Folder</label>
 			<label index="tx_websermons_folder">Folder</label>
 			<label index="tx_websermons_folder.title">Title</label>
 			<label index="tx_websermons_folder.path">Path</label>

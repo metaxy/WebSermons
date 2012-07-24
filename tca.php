@@ -171,8 +171,7 @@ $TCA['tx_websermons_files'] = array(
 				'foreign_table_where' => 'ORDER BY tx_websermons_folder.uid',	
 				'size' => 1,	
 				'minitems' => 0,
-				'maxitems' => 1,	
-				"MM" => "tx_websermons_files_parentfolder_mm",
+				'maxitems' => 1,
 			)
 		),
 	),
@@ -240,41 +239,7 @@ $TCA['tx_websermons_folder'] = array(
 				'foreign_table_where' => 'ORDER BY tx_websermons_folder.uid',	
 				'size' => 1,	
 				'minitems' => 0,
-				'maxitems' => 1,	
-				"MM" => "tx_websermons_folder_parentfolder_mm",	
-				'wizards' => array(
-					'_PADDING'  => 2,
-					'_VERTICAL' => 1,
-					'add' => array(
-						'type'   => 'script',
-						'title'  => 'Create new record',
-						'icon'   => 'add.gif',
-						'params' => array(
-							'table'    => 'tx_websermons_folder',
-							'pid'      => '###CURRENT_PID###',
-							'setValue' => 'prepend'
-						),
-						'script' => 'wizard_add.php',
-					),
-					'list' => array(
-						'type'   => 'script',
-						'title'  => 'List',
-						'icon'   => 'list.gif',
-						'params' => array(
-							'table' => 'tx_websermons_folder',
-							'pid'   => '###CURRENT_PID###',
-						),
-						'script' => 'wizard_list.php',
-					),
-					'edit' => array(
-						'type'                     => 'popup',
-						'title'                    => 'Edit',
-						'script'                   => 'wizard_edit.php',
-						'popup_onlyOpenIfSelected' => 1,
-						'icon'                     => 'edit2.gif',
-						'JSopenParams'             => 'height=350,width=580,status=0,menubar=0,scrollbars=1',
-					),
-				),
+				'maxitems' => 1,
 			)
 		),
 	),
