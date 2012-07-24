@@ -18,9 +18,9 @@
 			<label index="tx_websermons_folder.title">Title</label>
 			<label index="tx_websermons_folder.path">Path</label>
 			<label index="tx_websermons_folder.parentfolder">Parent Folder</label>
-			<label index="tt_content.list_type_pi2">Last Sermons</label>
-			<label index="tt_content.list_type_pi3">Folder</label>
-			<label index="tt_content.list_type_pi4">All Sermons</label>
+			<label index="tt_content.list_type_pfiles">Last Sermons</label>
+			<label index="tt_content.list_type_pfolder">Folder</label>
+			<label index="tt_content.list_type_plast">All Sermons</label>
 		</languageKey>
 		<languageKey index="de" type="array">
 			<label index="tx_websermons_files">Dateien</label>
@@ -35,9 +35,9 @@
 			<label index="tx_websermons_folder.title">Titel</label>
 			<label index="tx_websermons_folder.path">Pfad</label>
 			<label index="tx_websermons_folder.parentfolder">Übergeordneter Ordner</label>
-			<label index="tt_content.list_type_pi2">Letzen Predigten</label>
-			<label index="tt_content.list_type_pi3">Ordner</label>
-			<label index="tt_content.list_type_pi4">Alle Predigten</label>
+			<label index="tt_content.list_type_pfiles">Letzen Predigten</label>
+			<label index="tt_content.list_type_pfolder">Ordner</label>
+			<label index="tt_content.list_type_plast">Alle Predigten</label>
 		</languageKey>
 	</data>
 </T3locallang>

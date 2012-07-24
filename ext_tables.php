@@ -14,7 +14,7 @@ $TCA['tx_websermons_files'] = array(
 		'languageField'            => 'sys_language_uid',	
 		'transOrigPointerField'    => 'l10n_parent',	
 		'transOrigDiffSourceField' => 'l10n_diffsource',	
-		'default_sortby' => 'ORDER BY date_934e1a7418',	
+		'default_sortby' => 'ORDER BY pdate',	
 		'delete' => 'deleted',	
 		'enablecolumns' => array(		
 			'disabled' => 'hidden',	
@@ -47,58 +47,58 @@ $TCA['tx_websermons_folder'] = array(
 
 
 t3lib_div::loadTCA('tt_content');
-$TCA['tt_content']['types']['list']['subtypes_excludelist'][$_EXTKEY.'_pi2'] = 'layout,select_key,pages';
+$TCA['tt_content']['types']['list']['subtypes_excludelist'][$_EXTKEY.'_pfiles'] = 'layout,select_key,pages';
 
 
 t3lib_extMgm::addPlugin(array(
-	'LLL:EXT:websermons/locallang_db.xml:tt_content.list_type_pi2',
-	$_EXTKEY . '_pi2',
+	'LLL:EXT:websermons/locallang_db.xml:tt_content.list_type_pfiles',
+	$_EXTKEY . '_pfiles',
 	t3lib_extMgm::extRelPath($_EXTKEY) . 'ext_icon.gif'
 ),'list_type');
 
 
-t3lib_extMgm::addStaticFile($_EXTKEY, 'pi2/static/', 'Last Sermons');
+t3lib_extMgm::addStaticFile($_EXTKEY, 'pfiles/static/', 'Last Sermons');
 
 
 if (TYPO3_MODE === 'BE') {
-	$TBE_MODULES_EXT['xMOD_db_new_content_el']['addElClasses']['tx_websermons_pi2_wizicon'] = t3lib_extMgm::extPath($_EXTKEY) . 'pi2/class.tx_websermons_pi2_wizicon.php';
+	$TBE_MODULES_EXT['xMOD_db_new_content_el']['addElClasses']['tx_websermons_pfiles_wizicon'] = t3lib_extMgm::extPath($_EXTKEY) . 'pfiles/class.tx_websermons_pfiles_wizicon.php';
 }
 
 
 t3lib_div::loadTCA('tt_content');
-$TCA['tt_content']['types']['list']['subtypes_excludelist'][$_EXTKEY.'_pi3'] = 'layout,select_key,pages';
+$TCA['tt_content']['types']['list']['subtypes_excludelist'][$_EXTKEY.'_pfolder'] = 'layout,select_key,pages';
 
 
 t3lib_extMgm::addPlugin(array(
-	'LLL:EXT:websermons/locallang_db.xml:tt_content.list_type_pi3',
-	$_EXTKEY . '_pi3',
+	'LLL:EXT:websermons/locallang_db.xml:tt_content.list_type_pfolder',
+	$_EXTKEY . '_pfolder',
 	t3lib_extMgm::extRelPath($_EXTKEY) . 'ext_icon.gif'
 ),'list_type');
 
 
-t3lib_extMgm::addStaticFile($_EXTKEY, 'pi3/static/', 'Folder');
+t3lib_extMgm::addStaticFile($_EXTKEY, 'pfolder/static/', 'Folder');
 
 
 if (TYPO3_MODE === 'BE') {
-	$TBE_MODULES_EXT['xMOD_db_new_content_el']['addElClasses']['tx_websermons_pi3_wizicon'] = t3lib_extMgm::extPath($_EXTKEY) . 'pi3/class.tx_websermons_pi3_wizicon.php';
+	$TBE_MODULES_EXT['xMOD_db_new_content_el']['addElClasses']['tx_websermons_pfolder_wizicon'] = t3lib_extMgm::extPath($_EXTKEY) . 'pfolder/class.tx_websermons_pfolder_wizicon.php';
 }
 
 
 t3lib_div::loadTCA('tt_content');
-$TCA['tt_content']['types']['list']['subtypes_excludelist'][$_EXTKEY.'_pi4'] = 'layout,select_key,pages';
+$TCA['tt_content']['types']['list']['subtypes_excludelist'][$_EXTKEY.'_plast'] = 'layout,select_key,pages';
 
 
 t3lib_extMgm::addPlugin(array(
-	'LLL:EXT:websermons/locallang_db.xml:tt_content.list_type_pi4',
-	$_EXTKEY . '_pi4',
+	'LLL:EXT:websermons/locallang_db.xml:tt_content.list_type_plast',
+	$_EXTKEY . '_plast',
 	t3lib_extMgm::extRelPath($_EXTKEY) . 'ext_icon.gif'
 ),'list_type');
 
 
-t3lib_extMgm::addStaticFile($_EXTKEY, 'pi4/static/', 'All Sermons');
+t3lib_extMgm::addStaticFile($_EXTKEY, 'plast/static/', 'All Sermons');
 
 
 if (TYPO3_MODE === 'BE') {
-	$TBE_MODULES_EXT['xMOD_db_new_content_el']['addElClasses']['tx_websermons_pi4_wizicon'] = t3lib_extMgm::extPath($_EXTKEY) . 'pi4/class.tx_websermons_pi4_wizicon.php';
+	$TBE_MODULES_EXT['xMOD_db_new_content_el']['addElClasses']['tx_websermons_plast_wizicon'] = t3lib_extMgm::extPath($_EXTKEY) . 'plast/class.tx_websermons_plast_wizicon.php';
 }
 ?>
