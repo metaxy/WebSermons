@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>database</type>
+		<description>Language labels for database tables/fields belonging to extension 'websermons'</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="tx_websermons_files">Files</label>
+			<label index="tx_websermons_files.title">Title</label>
+			<label index="tx_websermons_files.speaker">Speaker</label>
+			<label index="tx_websermons_files.topic">Topic</label>
+			<label index="tx_websermons_files.path">Path</label>
+			<label index="tx_websermons_files.date_934e1a7418">Date</label>
+			<label index="tx_websermons_files.links">Links</label>
+			<label index="tx_websermons_folder">Folder</label>
+			<label index="tx_websermons_folder.title">Title</label>
+			<label index="tx_websermons_folder.path">Path</label>
+			<label index="tx_websermons_folder.parentfolder">Parent Folder</label>
+			<label index="tt_content.list_type_pi2">Last Sermons</label>
+			<label index="tt_content.list_type_pi3">Folder</label>
+			<label index="tt_content.list_type_pi4">All Sermons</label>
+		</languageKey>
+		<languageKey index="de" type="array">
+			<label index="tx_websermons_files">Dateien</label>
+			<label index="tx_websermons_files.title">Titel</label>
+			<label index="tx_websermons_files.speaker">Prediger</label>
+			<label index="tx_websermons_files.topic">Thema</label>
+			<label index="tx_websermons_files.path">Pfad</label>
+			<label index="tx_websermons_files.date_934e1a7418">Datum</label>
+			<label index="tx_websermons_files.links">Links</label>
+			<label index="tx_websermons_folder">Ordner</label>
+			<label index="tx_websermons_folder.title">Titel</label>
+			<label index="tx_websermons_folder.path">Pfad</label>
+			<label index="tx_websermons_folder.parentfolder">Übergeordneter Ordner</label>
+			<label index="tt_content.list_type_pi2">Letzen Predigten</label>
+			<label index="tt_content.list_type_pi3">Ordner</label>
+			<label index="tt_content.list_type_pi4">Alle Predigten</label>
+		</languageKey>
+	</data>
+</T3locallang>

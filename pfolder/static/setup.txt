@@ -1,0 +1,21 @@
+
+
+plugin.tx_websermons_pfolder {
+	CMD =
+	pidList =
+	recursive =
+}
+plugin.tx_websermons_pfolder.listView {
+	results_at_a_time =
+	maxPages =
+}
+  # Example of default set CSS styles (these go into the document header):
+plugin.tx_websermons_pfolder._CSS_DEFAULT_STYLE (
+  .tx-websermons-pfolder h2 { margin-top: 0px; margin-bottom: 0px; }
+)
+  # Example of how to overrule LOCAL_LANG values for the plugin:
+plugin.tx_websermons_pfolder._LOCAL_LANG.default {
+  pi_list_searchBox_search = Search!
+}
+  # Example of how to set default values from TS in the incoming array, $this->piVars of the plugin:
+plugin.tx_websermons_pfolder._DEFAULT_PI_VARS.test = test
