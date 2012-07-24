@@ -31,4 +31,12 @@ t3lib_extMgm::addTypoScript($_EXTKEY, 'setup', '
 	tt_content.shortcut.20.0.conf.tx_websermons_files = < plugin.' . t3lib_extMgm::getCN($_EXTKEY) . '_plast
 	tt_content.shortcut.20.0.conf.tx_websermons_files.CMD = singleView
 ', 43);
+
+	// Register information for the task
+$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['scheduler']['tasks']['tx_websermons_importFiles'] = array(
+	'extension'        => $_EXTKEY,
+	'title'            => 'LLL:EXT:' . $_EXTKEY . '/locallang.xml:scheduler.importFiles.name',
+	'description'      => 'LLL:EXT:' . $_EXTKEY . '/locallang.xml:scheduler.importFiles.description',
+	'additionalFields' => 'tx_websermons_importfiles_additionalfieldprovider'
+);
 ?>
