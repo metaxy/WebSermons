@@ -164,7 +164,7 @@ class tx_websermons_pfiles extends tslib_pibase {
 				<p' . $this->pi_classParam('listrowField-speaker') . '>' . $this->getFieldContent('speaker') . '</p>
 				<p' . $this->pi_classParam('listrowField-topic') . '>' . $this->getFieldContent('topic') . '</p>
 				<p' . $this->pi_classParam('listrowField-path') . '>' . $this->getFieldContent('path') . '</p>
-				<p' . $this->pi_classParam('listrowField-date-934e1a7418') . '>' . $this->getFieldContent('date_934e1a7418') . '</p>
+				<p' . $this->pi_classParam('listrowField-pdate') . '>' . $this->getFieldContent('pdate') . '</p>
 			';
 		return $out;
 	}
@@ -192,7 +192,7 @@ class tx_websermons_pfiles extends tslib_pibase {
 				<p' . $this->pi_classParam("singleViewField-speaker") . '><strong>' . $this->getFieldHeader('speaker') . ':</strong> ' . $this->getFieldContent('speaker') . '</p>
 				<p' . $this->pi_classParam("singleViewField-topic") . '><strong>' . $this->getFieldHeader('topic') . ':</strong> ' . $this->getFieldContent('topic') . '</p>
 				<p' . $this->pi_classParam("singleViewField-path") . '><strong>' . $this->getFieldHeader('path') . ':</strong> ' . $this->getFieldContent('path') . '</p>
-				<p' . $this->pi_classParam("singleViewField-date-934e1a7418") . '><strong>' . $this->getFieldHeader('date_934e1a7418') . ':</strong> ' . $this->getFieldContent('date_934e1a7418') . '</p>
+				<p' . $this->pi_classParam("singleViewField-pdate") . '><strong>' . $this->getFieldHeader('pdate') . ':</strong> ' . $this->getFieldContent('pdate') . '</p>
 				<p' . $this->pi_classParam("singleViewField-links") . '><strong>' . $this->getFieldHeader('links') . ':</strong> ' . $this->getFieldContent('links') . '</p>
 		<p>' . $this->pi_list_linkSingle($this->pi_getLL('back', 'Back'), 0) . '</p></div>' .
 		$this->pi_getEditPanel();
@@ -214,9 +214,9 @@ class tx_websermons_pfiles extends tslib_pibase {
 					// This will wrap the title in a link.
 				return $this->pi_list_linkSingle($this->internal['currentRow']['title'], $this->internal['currentRow']['uid'], 1);
 				break;
-			case "date_934e1a7418":
+			case "pdate":
 					// For a numbers-only date, use something like: %d-%m-%y
-				return strftime('%A %e. %B %Y', $this->internal['currentRow']['date_934e1a7418']);
+				return strftime('%A %e. %B %Y', $this->internal['currentRow']['pdate']);
 				break;
 			default:
 				return $this->internal['currentRow'][$fN];

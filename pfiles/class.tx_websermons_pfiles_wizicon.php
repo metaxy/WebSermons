@@ -31,7 +31,7 @@
  * @package	TYPO3
  * @subpackage	tx_websermons
  */
-class tx_websermons_pi4_wizicon {
+class tx_websermons_pfiles_wizicon {
 
 	/**
 	 * Processing the wizard items array
@@ -42,11 +42,11 @@ class tx_websermons_pi4_wizicon {
 	public function proc(array $wizardItems) {
 		$LL = $this->includeLocalLang();
 
-		$wizardItems['plugins_tx_websermons_pi4'] = array(
-			'icon' => t3lib_extMgm::extRelPath('websermons') . 'pi4/ce_wiz.gif',
-			'title' => $GLOBALS['LANG']->getLLL('pi4_title', $LL),
-			'description' => $GLOBALS['LANG']->getLLL('pi4_plus_wiz_description', $LL),
-			'params' => '&defVals[tt_content][CType]=list&defVals[tt_content][list_type]=websermons_pi4'
+		$wizardItems['plugins_tx_websermons_pfiles'] = array(
+			'icon' => t3lib_extMgm::extRelPath('websermons') . 'pfiles/ce_wiz.gif',
+			'title' => $GLOBALS['LANG']->getLLL('pfiles_title', $LL),
+			'description' => $GLOBALS['LANG']->getLLL('pfiles_plus_wiz_description', $LL),
+			'params' => '&defVals[tt_content][CType]=list&defVals[tt_content][list_type]=websermons_pfiles'
 		);
 
 		return $wizardItems;
@@ -76,8 +76,8 @@ class tx_websermons_pi4_wizicon {
 
 
 
-if (defined('TYPO3_MODE') && isset($GLOBALS['TYPO3_CONF_VARS'][TYPO3_MODE]['XCLASS']['ext/websermons/pi4/class.tx_websermons_pi4_wizicon.php'])) {
-	include_once($GLOBALS['TYPO3_CONF_VARS'][TYPO3_MODE]['XCLASS']['ext/websermons/pi4/class.tx_websermons_pi4_wizicon.php']);
+if (defined('TYPO3_MODE') && isset($GLOBALS['TYPO3_CONF_VARS'][TYPO3_MODE]['XCLASS']['ext/websermons/pfiles/class.tx_websermons_pfiles_wizicon.php'])) {
+	include_once($GLOBALS['TYPO3_CONF_VARS'][TYPO3_MODE]['XCLASS']['ext/websermons/pfiles/class.tx_websermons_pfiles_wizicon.php']);
 }
 
 ?>

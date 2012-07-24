@@ -232,9 +232,12 @@ $TCA['tx_websermons_folder'] = array(
 		),
 		'parentfolder' => array(		
 			'exclude' => 0,		
-			'label' => 'LLL:EXT:websermons/locallang_db.xml:tx_websermons_folder.parentfolder',		
+			'label' => 'LLL:EXT:websermons/locallang_db.xml:tx_websermons_folder.parentfolder',
 			'config' => array(
 				'type' => 'select',	
+				'items' => array(
+				    array('', 0),
+				  ),
 				'foreign_table' => 'tx_websermons_folder',	
 				'foreign_table_where' => 'ORDER BY tx_websermons_folder.uid',	
 				'size' => 1,	

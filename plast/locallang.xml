@@ -10,7 +10,7 @@
 			<label index="listFieldHeader_speaker">Speaker</label>
 			<label index="listFieldHeader_topic">Topic</label>
 			<label index="listFieldHeader_path">Path</label>
-			<label index="listFieldHeader_date_934e1a7418">Date</label>
+			<label index="listFieldHeader_pdate">Date</label>
 			<label index="listFieldHeader_links">Links</label>
 			<label index="list_mode_1">Mode 1</label>
 			<label index="list_mode_2">Mode 2</label>
