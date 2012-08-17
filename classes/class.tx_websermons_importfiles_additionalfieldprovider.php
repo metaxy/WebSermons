@@ -3,7 +3,6 @@
 *  Copyright notice
 *
 *  (c) 2009 Steffen Müller <typo3@t3node.com>
-*  (c) 2009 Francois Suter <francois@typo3.org>
 *  All rights reserved
 *
 *  This script is part of the TYPO3 project. The TYPO3 project is
@@ -55,29 +54,59 @@ class tx_websermons_ImportFiles_AdditionalFieldProvider implements tx_scheduler_
 			// Initialize extra field value
 		if (empty($taskInfo['pageid'])) {
 			if ($parentObject->CMD == 'add') {
-					// In case of new task and if field is empty, set default text for page id
 				$taskInfo['pageid'] = 'Enter id';
-
 			} elseif ($parentObject->CMD == 'edit') {
-					// In case of edit, and editing a test task, set to internal value if not data was submitted already
 				$taskInfo['pageid'] = $task->pageid;
-
 			} else {
-					// Otherwise set an empty value, as it will not be used anyway
 				$taskInfo['pageid'] = '';
 			}
 		}
-
+        if (empty($taskInfo['monitoredpath'])) {
+            if ($parentObject->CMD == 'add') {
+                $taskInfo['monitoredpath'] = 'Enter path';
+            } elseif ($parentObject->CMD == 'edit') {
+                $taskInfo['monitoredpath'] = $task->monitoredPath;
+            } else {
+                $taskInfo['monitoredpath'] = '';
+            }
+        }
+        if (empty($taskInfo['parentfolder'])) {
+            if ($parentObject->CMD == 'add') {
+                $taskInfo['parentfolder'] = 'Enter id';
+            } elseif ($parentObject->CMD == 'edit') {
+                $taskInfo['parentfolder'] = $task->parentFolder;
+            } else {
+                $taskInfo['parentfolder'] = '';
+            }
+        }
 			// Generate the additional field
 		$fieldID = 'task_pageid';
-		$fieldCode = '<input type="text" name="tx_scheduler[pageid]" id="' . $fieldID . '" value="' . $taskInfo['pageid'] . '" size="8" />';
+		$fieldCode_pageid = '<input type="text" name="tx_scheduler[pageid]" id="task_pageid" value="' . $taskInfo['pageid'] . '" size="8" />';
+        $fieldCode_monitoredpath = '<input type="text" name="tx_scheduler[pageid]" id="task_monitoredpath" value="' . $taskInfo['monitoredpath'] . '" size="25" />';
+		$fieldCode_parentfolder = '<input type="text" name="tx_scheduler[pageid]" id="task_parentfolder" value="' . $taskInfo['parentfolder'] . '" size="8" />';
+
 		$additionalFields = array();
-		$additionalFields[$fieldID] = array(
-			'code'     => $fieldCode,
+		
+		$additionalFields['task_pageid'] = array(
+			'code'     => $fieldCode_pageid,
 			'label'    => 'LLL:EXT:websermons/locallang.xml:scheduler.importFiles.label.pageid',
 			'cshKey'   => 'xMOD_tx_websermons',
-			'cshLabel' => $fieldID
+			'cshLabel' => 'task_pageid'
 		);
+		
+		$additionalFields['task_monitoredpath'] = array(
+            'code'     => $fieldCode_monitoredpath,
+            'label'    => 'LLL:EXT:websermons/locallang.xml:scheduler.importFiles.label.monitoredpath',
+            'cshKey'   => 'xMOD_tx_websermons',
+            'cshLabel' => 'task_monitoredpath'
+        );
+        
+        $additionalFields['task_parentfolder'] = array(
+            'code'     => $fieldCode_parentfolder,
+            'label'    => 'LLL:EXT:websermons/locallang.xml:scheduler.importFiles.label.parentfolder',
+            'cshKey'   => 'xMOD_tx_websermons',
+            'cshLabel' => 'task_parentfolder'
+        );
 
 		return $additionalFields;
 	}
@@ -120,6 +149,8 @@ class tx_websermons_ImportFiles_AdditionalFieldProvider implements tx_scheduler_
 	 */
 	public function saveAdditionalFields(array $submittedData, tx_scheduler_Task $task) {
 		$task->pageid = $submittedData['pageid'];
+		$task->monitoredPath = $submittedData['monitoredpath'];
+		$task->parentFolder = $submittedData['parentfolder'];
 	}
 }
 

@@ -2,7 +2,7 @@
 /***************************************************************
 *  Copyright notice
 *
-*  (c) 2009 Steffen Müller (typo3@t3node.com)
+*  (c) 2012 Paul Walger (metaxy@walger.name)
 *  All rights reserved
 *
 *  This script is part of the TYPO3 project. The TYPO3 project is
@@ -25,9 +25,9 @@
 /**
  * Class "tx_websermons_ImportFiles" provides task procedures
  *
- * @author		Steffen Müller <typo3@t3node.com>
+ * @author		Paul Walger <metaxy@walger.name>
  * @package		TYPO3
- * @subpackage		tx_smscheddemo
+ * @subpackage		tx_websermons
  *
  */
  
@@ -36,24 +36,19 @@ else die('GetID3() Library not loaded!');
 
 class tx_websermons_ImportFiles extends tx_scheduler_Task {
 
-	/**
-	 * A page uid to be cleaned up
-	 *
-	 * @var	int		$pageid
-	 */
     var $pageid;
     var $monitoredPath;
+    var $parentFolder;
 	/**
 	 * Function executed from the Scheduler.
-	 * Hides all content elements of a page
 	 *
 	 * @return	boolean	TRUE if success, otherwise FALSE
 	 */
 	public function execute() {
         $success = true;
-        $monitoredPath = "/srv/www/htdocs/t4/fileadmin/predigten/";
+        $this->monitoredPath = "/srv/www/htdocs/t4/fileadmin/predigten/";
         $getID3 = t3lib_div::makeInstance('getID3');
-        $notUsed = $this->getNotUsedFiles($monitoredPath);
+        $notUsed = $this->getNotUsedFiles($this->monitoredPath);
         $i = 0;
         foreach($notUsed as $mp3file) {
             $i++;
@@ -65,19 +60,20 @@ class tx_websermons_ImportFiles extends tx_scheduler_Task {
                 $success = false;
             } else {
                 $dataArr = array();
-                $fieldList = "path,title,speaker,topic,links,parentfolder,pdate";
+
                 $dataArr["path"] = $mp3file;
-                
                 $dataArr["title"] = "Predigt";
                 $dataArr["speaker"] = $id3Info['tags']['id3v2']['artist'][0];
                 $dataArr["topic"] = $id3Info['tags']['id3v2']['title'][0];
                 $dataArr["links"] = $id3Info['tags']['id3v2']['comments'][0];
                 $dataArr["pdate"] = strtotime($id3Info['tags']['id3v2']['date'][0]);
-                $dataArr["parentfolder"] = 4;
+                $dataArr["parentfolder"] = $this->parentFolder;
+                
+                $fieldList = "path,title,speaker,topic,links,parentfolder,pdate";
 
                 tslib_cObj::DBgetInsert("tx_websermons_files", 74, $dataArr, $fieldList, true);
-                $GLOBALS['BE_USER']->simplelog(print_r($id3Info, true), "websermons", 1);
-                $GLOBALS['BE_USER']->simplelog("speaker = " . print_r($id3Info['tags']['id3v2']['artist'], true), "websermons", 1);
+                //$GLOBALS['BE_USER']->simplelog(print_r($id3Info, true), "websermons", 1);
+                //$GLOBALS['BE_USER']->simplelog("speaker = " . print_r($id3Info['tags']['id3v2']['artist'], true), "websermons", 1);
 
             }
             //$GLOBALS['BE_USER']->simplelog("$mp3file pharsed", "websermons");
