@@ -6,8 +6,8 @@
 	</meta>
 	<data type="array">
 		<languageKey index="default" type="array">
-			<label index="pfiles_title">Files</label>
-			<label index="pfolder_title">Folder</label>
+			<label index="pfiles_title">A Sermons file</label>
+			<label index="pfolder_title">All Sermons</label>
 			<label index="plast_title">Last Sermons</label>
             
             <label index="scheduler.importFiles.name">Import Files</label>
