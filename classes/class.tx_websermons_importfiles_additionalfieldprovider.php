@@ -113,7 +113,6 @@ class tx_websermons_ImportFiles_AdditionalFieldProvider implements tx_scheduler_
 
 	/**
 	 * Field validation.
-	 * This method checks if page id given in the 'Hide content' specific task is int+
 	 * If the task class is not relevant, the method is expected to return true
 	 *
 	 * @param	array			$submittedData: reference to the array containing the data submitted by the user
