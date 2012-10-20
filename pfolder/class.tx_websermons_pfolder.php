@@ -57,9 +57,10 @@ class tx_websermons_pfolder extends tslib_pibase {
 					$conf['pidList'] = $this->cObj->data['pages'];
 					$conf['recursive'] = $this->cObj->data['recursive'];
 				}
-				return $this->pi_wrapInBaseClass($this->listView($content, $conf));
+				return $this->pi_wrapInBaseClass($this->listAll($content, $conf));
 				break;
 		}
+		//return $content. "whats up?";
 	}
 	
 	/**
@@ -69,89 +70,41 @@ class tx_websermons_pfolder extends tslib_pibase {
 	 * @param array $conf Plugin Configuration
 	 * @return string HTML list of table entries
 	 */
-	protected function listView($content, array $conf) {
+	protected function listAll($content, array $conf) {
 		$this->conf = $conf;		// Setting the TypoScript passed to this function in $this->conf
 		$this->pi_setPiVarDefaults();
 		$this->pi_loadLL();		// Loading the LOCAL_LANG values
-		
-		$lConf = $this->conf['listView.'];	// Local settings for the listView function
-	
-		if (is_numeric($this->piVars['showUid'])) {	// If a single element should be displayed:
-			$this->internal['currentTable'] = 'tx_websermons_folder';
-			$this->internal['currentRow'] = $this->pi_getRecord('tx_websermons_folder', $this->piVars['showUid']);
-	
-			$content = $this->singleView($content, $conf);
-			return $content;
-		} else {
-			$items = array(
-				'1' => $this->pi_getLL('list_mode_1', 'Mode 1'),
-				'2' => $this->pi_getLL('list_mode_2', 'Mode 2'),
-				'3' => $this->pi_getLL('list_mode_3', 'Mode 3'),
-			);
-			if (!isset($this->piVars['pointer'])) $this->piVars['pointer'] = 0;
-			if (!isset($this->piVars['mode'])) $this->piVars['mode'] = 1;
-	
-				// Initializing the query parameters:
-			list($this->internal['orderBy'],$this->internal['descFlag']) = explode(':', $this->piVars['sort']);
-			$version = class_exists('t3lib_utility_VersionNumber')
-					? t3lib_utility_VersionNumber::convertVersionNumberToInteger(TYPO3_version)
-					: t3lib_div::int_from_ver(TYPO3_version);
-			if ($version < 4006000) {
-				$this->internal['results_at_a_time'] = t3lib_div::intInRange($lConf['results_at_a_time'], 0, 1000, 3);		// Number of results to show in a listing.
-				$this->internal['maxPages'] = t3lib_div::intInRange($lConf['maxPages'], 0, 1000, 2);;		// The maximum number of "pages" in the browse-box: "Page 1", "Page 2", etc.
-			} else {
-				$this->internal['results_at_a_time'] = t3lib_utility_Math::forceIntegerInRange($lConf['results_at_a_time'], 0, 1000, 3);		// Number of results to show in a listing.
-				$this->internal['maxPages'] = t3lib_utility_Math::forceIntegerInRange($lConf['maxPages'], 0, 1000, 2);;		// The maximum number of "pages" in the browse-box: "Page 1", "Page 2", etc.
-			}
-			$this->internal['searchFieldList'] = 'title,path';
-			$this->internal['orderByList'] = 'uid,title,path';
-	
-				// Get number of records:
-			$res = $this->pi_exec_query('tx_websermons_folder', 1);
-			list($this->internal['res_count']) = $GLOBALS['TYPO3_DB']->sql_fetch_row($res);
-	
-				// Make listing query, pass query to SQL database:
-			$res = $this->pi_exec_query('tx_websermons_folder');
-			$this->internal['currentTable'] = 'tx_websermons_folder';
-	
-				// Put the whole list together:
-			$fullTable = '';	// Clear var;
-			// $fullTable .= t3lib_div::view_array($this->piVars);	// DEBUG: Output the content of $this->piVars for debug purposes. REMEMBER to comment out the IP-lock in the debug() function in t3lib/config_default.php if nothing happens when you un-comment this line!
-	
-				// Adds the mode selector.
-			$fullTable .= $this->pi_list_modeSelector($items);
-	
-				// Adds the whole list table
-			$fullTable .= $this->makeList($res);
-	
-				// Adds the search box:
-			$fullTable .= $this->pi_list_searchBox();
-	
-				// Adds the result browser:
-			$fullTable .= $this->pi_list_browseresults();
-	
-				// Returns the content from the plugin.
-			return $fullTable;
+
+		// Make listing query, pass query to SQL database:
+		$res = $this->pi_exec_query('tx_websermons_files');
+		$this->internal['currentTable'] = 'tx_websermons_files';
+
+		// Put the whole list together:
+		$fullTable = '';	// Clear var;
+		$fullTable .= "<table id='foldertable' cellspacing='0'><tr><th scope='col' class='left'>".$this->pi_getLL('sermonsTitle')."</th>";
+        $fullTable .= "<th scope='col'>".$this->pi_getLL('sermonsTopic')."</th>\n";
+        $fullTable .= "<th scope='col'>".$this->pi_getLL('sermonsSpeaker')."</th>\n";
+        $fullTable .= "<th scope='col'>".$this->pi_getLL('sermonsDate')."</th>\n";
+        $fullTable .= "<th scope='col'>".$this->pi_getLL('sermonsDownload')."</th></tr>\n";
+        
+		while (($row = $GLOBALS['TYPO3_DB']->sql_fetch_assoc($res)) !== FALSE) {
+            $fullTable .= "<tr>\n";
+            $fullTable .= "<th class='spec' scope='row'>". $row['title'] . "</th>\n";
+            $fullTable .= "<td>".$row['topic']."</td>\n";
+            $fullTable .= "<td>".$row['speaker']."</td>\n";
+            $fullTable .= "<td>".$row['pdate']."</td>\n";
+            $fullTable .= "<td>";
+            if($row['path'] != "") {
+                $fullTable .="<a href='".$row['path']."'> ". $this->pi_getLL('sermonsDownloadFile') . "</a>";
+            }
+            $fullTable .= "</td>";
+            $fullTable .= "</tr>\n";
 		}
+        $fullTable .= "</table>\n";
+
+		return $fullTable;
 	}
-	/**
-	 * Creates a list from a database query.
-	 *
-	 * @param resource $res A database result resource
-	 * @return string A HTML list if result items
-	 */
-	protected function makeList($res) {
-		$items = array();
-			// Make list table rows
-		while (($this->internal['currentRow'] = $GLOBALS['TYPO3_DB']->sql_fetch_assoc($res)) !== FALSE) {
-			$items[] = $this->makeListItem();
-		}
-	
-		$out = '<div' . $this->pi_classParam('listrow') . '>
-			' . implode(chr(10), $items) . '
-			</div>';
-		return $out;
-	}
+
 	
 	/**
 	 * Implodes a single row from a database to a single line.

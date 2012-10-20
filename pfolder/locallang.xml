@@ -18,6 +18,13 @@
 			<label index="pi_list_browseresults_next">Next &gt;</label>
 			<label index="pi_list_browseresults_displays">Displaying results ###SPAN_BEGIN###%s to %s&lt;/span&gt; out of ###SPAN_BEGIN###%s&lt;/span&gt;</label>
 			<label index="pi_list_searchBox_search">Search</label>
+            
+            <label index="sermonsTitle">Title</label>
+            <label index="sermonsTopic">Topic</label>
+            <label index="sermonsSpeaker">Speaker</label>
+            <label index="sermonsDate">Date</label>
+            <label index="sermonsDownload">Download</label>
+            <label index="sermonsDownloadFile">MP3</label>
 		</languageKey>
 	</data>
 </T3locallang>
