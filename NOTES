@@ -1,1 +1,28 @@
- 
+Dieses System basiert auf den Erfahrungen mit <https://github.com/metaxy/sermons>
+
+Die Datenbank besteht einfach aus einer Tabelle mit Dateien <tx_websermons_files> und Ordnern <tx_websermons_folder>.
+
+* <tx_websermons_files>
+  title: Was die Datei ist. zb Predigt, Lied, Zeugnis usw
+  speaker: Der Sprecher/Sänger/Prediger
+  topic: Topic of the sermons with scripture referecens
+  path: The absolute path of the file
+  pdate: Date when the sermon was told. Unix Timestamp
+  links: Addtional links like  Scripts, Picture, Clips or the  
+  parentfolder: Im welchem Ordner die Datei eingeordnet ist, siehe <tx_websermons_folder>
+  
+* <tx_websermons_folder>
+   title:
+   path: Additional info.
+   parentfolder:
+   
+
+   
+Plugins
+
+ * pfiles
+   Shows a certain file.
+ * pfolder
+   The main plugin. Lists all files and folders.
+ * plast
+   Shows only the last <6> sermons.
